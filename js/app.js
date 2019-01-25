@@ -17,8 +17,12 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-   //console.log(dt);
-   this.x = (this.x + this.speed*dt);
+   //console.log(window.ctx.canvas.width);
+   if (this.x > window.ctx.canvas.width){
+    this.x = -150;
+   }else{
+    this.x = (this.x + this.speed*dt);
+   }
    //this.y = (this.y + (50*dt));
 
    // console.log(this.x);
@@ -66,11 +70,12 @@ let player = new Player();
 
 let enemey1 = new Enemy(-150,145,50);
 let enemey2 = new Enemy(-150,225,150);
+let enemey3 = new Enemy(-150,55,100);
 
 
 allEnemies.push(enemey1);
 allEnemies.push(enemey2);
-
+allEnemies.push(enemey3);
 
 
 // This listens for key presses and sends the keys to your
