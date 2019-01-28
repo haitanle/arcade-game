@@ -1,1 +1,1 @@
-# arcade-game
+To start the game, run index.html file on internet browser.
