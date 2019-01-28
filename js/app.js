@@ -3,7 +3,12 @@ window.playerPosX = 0;
 window.playerPosY = 0;
 window.isPlayerHit = false;
 
-// Enemies our player must avoid
+/*
+* @description Enemy object
+* @constructor
+* @param {int} y - starting y-axis position
+* @param {int} speed - enemy speed 
+*/
 var Enemy = function(y,speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -33,9 +38,8 @@ Enemy.prototype.update = function(dt) {
 };
 
 /*
-* detectCollision function
-* input: enemy object
-* Using enemy location and size to determine if collision with player's position
+* @description Using enemy location and size to determine if collision with player's position
+* @param {object} enemy
 */
 function detectCollision(enemy){
     const enemyHeight = {topHeight: enemy.y - enemy.size.top, lowHeight: enemy.y + enemy.size.bottom};
@@ -55,10 +59,11 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-var Player = function(x,y){
+/*
+* @description Player object
+* @constructor
+*/
+var Player = function(){
 
     this.sprite = 'images/char-boy.png';
     this.size = {top: 15, bottom: 15, left: 40, right: 40}
@@ -85,9 +90,8 @@ Player.prototype.update = function() {
 }
 
 /*
-* detectEdge function
-* adjust the player's object position using canvas edge
-* input: player object
+* @description adjust the player's object position using canvas edge
+* @param {object} player
 */
 function detectEdge(player){
     const  canvasEdgeWidth = window.ctx.canvas.width - (player.size.left + player.size.right);
@@ -105,9 +109,8 @@ function detectEdge(player){
 
 
 /*
-* detectWin function 
-* determine whether player has crossed finishing line
-* input- player object
+* @description determine whether player has crossed finishing line
+* @param {object} player
 */ 
 function detectWin(player){
     const winLine = 60;
@@ -140,7 +143,6 @@ Player.prototype.handleInput = function(key){
     window.playerPosX = this.x;
     window.playerPosY = this.y;
 }
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
