@@ -14,7 +14,7 @@ var Enemy = function(y,speed) {
     // a helper we've provided to easily load images
 
     this.sprite = 'images/enemy-bug.png';
-    this.size = {top: 15, bottom: 15, left: 70, right: 70}
+    this.size = {top: 15, bottom: 15, left: 70, right: 70};
 
     this.startX = -150;
     this.x = this.startX;
@@ -46,8 +46,8 @@ function detectCollision(enemy){
     const enemyWidth = {leftWidth: enemy.x - enemy.size.left, rightWidth: enemy.x + enemy.size.right};
 
    if ((window.playerPosY >= enemyHeight.topHeight && window.playerPosY <= enemyHeight.lowHeight) && 
-            (window.playerPosX >= enemyWidth.leftWidth && window.playerPosX <= enemyWidth.rightWidth) 
-    ){
+            (window.playerPosX >= enemyWidth.leftWidth && window.playerPosX <= enemyWidth.rightWidth))
+   {
         window.playerPosX = 0;
         window.playerPosY = 0;
         window.isPlayerHit = true;
@@ -66,7 +66,7 @@ Enemy.prototype.render = function() {
 var Player = function(){
 
     this.sprite = 'images/char-boy.png';
-    this.size = {top: 15, bottom: 15, left: 40, right: 40}
+    this.size = {top: 15, bottom: 15, left: 40, right: 40};
 
     this.startX = 200;
     this.startY = 380;
@@ -86,7 +86,6 @@ Player.prototype.update = function() {
     }
     detectEdge(this); 
     detectWin(this);
-
 }
 
 /*
